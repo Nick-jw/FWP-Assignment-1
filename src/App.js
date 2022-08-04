@@ -7,16 +7,14 @@ import Footer from './Components/Footer'
 
 function App() {
   return (
-    <div class = 'container border'>
-
+    <div class = 'container-fluid  border-primary'>
       <div class = 'row'>
-
           <Header />
+        </div>
       <div class = 'row'>
           <Navbar />
       </div>
 
-      </div>
       <div class= 'row'>
         <Content />
       </div>
