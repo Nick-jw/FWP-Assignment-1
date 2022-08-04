@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 function Content () {
     return (
-        <div></div>
+        <div class = 'container border'>
+
+        </div>
+        
     );
 }
 
