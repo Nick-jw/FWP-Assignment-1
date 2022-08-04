@@ -1,23 +1,26 @@
 import React from 'react';
+import {BrowserRouter, NavLink, Routes, Route} from 'react-router-dom'
 
 function Navbar () {
     return (
-        <div className = {"navbar col-lg-12"}>
-            <div className={"container-fluid bg-light"}>
-                <nav className={"navbar navbar-expand-lg"}>
-                    <ul className={"navbar-nav"}>
-                        <li className={"nav-item"}>
-                            <a className={"nav-link"}>Link 1</a>
-                        </li>
-                        <li className={"nav-item"}>
-                            <a className={"nav-link"}>Link 2</a>
-                        </li>
-                        <li className={"nav-item"}>
-                            <a className={"nav-link"}>Link 3</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+        <div className = {"navbar col-lg-12 bg-dark"}>
+            <nav className={"navbar navbar-expand-lg"}>
+                <ul className='nav'>
+                    <li className={"nav-brand"}>
+                        <NavLink to= "" className = {"nav-link"} >Loop Agile Now</NavLink>
+                    </li>
+                </ul>
+            </nav>
+
+                <ul className={"nav justify-content-end"}>
+                    <li className={"nav-item"}>
+                        <NavLink to= "" className = {"nav-link"} >Sign In</NavLink>
+                    </li>
+                    <li className={"nav-item"}>
+                        <NavLink to= "" className = {"nav-link"} > Sign Up</NavLink>
+                    </li>
+                </ul>
+
         </div>
     );
 }
