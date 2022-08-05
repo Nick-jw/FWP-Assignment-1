@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function Sign_In () {
     return (
@@ -10,7 +10,7 @@ function Sign_In () {
                 <div className={"col-sm-1"}></div>
 
                 {/* This div contains all main content*/}
-                <div className={"col-sm-10 bg-dark"} style={{minHeight:500}}>
+                <div className={"col-sm-10 bg-light"} style={{minHeight:500}}>
                     <p className={"h1"}>Sign In area here</p>
                     <p className={"h6"}>lorem ipsum</p>
                 </div>

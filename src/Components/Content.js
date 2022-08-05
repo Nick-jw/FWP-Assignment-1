@@ -2,7 +2,7 @@ import React from 'react';
 
 function Content () {
     return (
-        <div className = {"content col-lg-12"}>
+        <div className = {"content col-lg-12 h-100"}>
             <div className={"container-fluid"}>
                 <div className={"row"}>
 
