@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Content from './Content';
-import Sign_In from './Sign_In';
-import Sign_Up from './Sign_Up';
+
 
 function Navbar () {
     return (
