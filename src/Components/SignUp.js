@@ -20,13 +20,33 @@ function SignUp () {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        localStorage.setItem('username', username)
-        localStorage.setItem('email', email)
-        localStorage.setItem('password', password)
-        alert("Form Submitted")
+        const password_str = new String(password)
+
+        const required_chars = /[!@#$%&]/
+        if ((password.length >= 8) && required_chars.test(password)) {
+
+            let users_list = JSON.parse(localStorage.getItem('users'))
+
+            if (users_list === null) {  
+            users_list = [] 
+            }   
+
+            let curr_user = {
+                'username': username,
+                'email': email,
+                'password': password,
+                'posts': []
+            }
+
+            users_list.push(curr_user)
+            localStorage.setItem('users', JSON.stringify(users_list))
+            alert("Form Submitted")
+        }
+        else {
+            alert("Password does not meet requirements\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
+        }
     }
 
-    {/* ADD FORM VALIDATION? */}
 
     return(
         <div className = {"content col-lg-12"}>
