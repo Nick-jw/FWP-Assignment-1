@@ -23,7 +23,6 @@ function SignUp () {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const password_str = new String(password)
 
         const required_chars = /[!@#$%&]/
         if ((password.length >= 8) && required_chars.test(password)) {

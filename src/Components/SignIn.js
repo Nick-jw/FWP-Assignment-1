@@ -11,7 +11,7 @@ function SignIn ({onSignIn}) {
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    const user_list = JSON.parse(localStorage.getItem('users'))
+    let user_list = JSON.parse(localStorage.getItem('users'))
     if (user_list === null) {
     user_list = []  
     }
