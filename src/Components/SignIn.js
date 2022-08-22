@@ -35,7 +35,7 @@ function SignIn ({onSignIn}) {
             onSignIn(email);
             navigate('/feed', {replace: true});
         } else{
-            setError('Login failed!');
+            setError('Login failed! Email or password do not match');
         }
         
     };
@@ -80,7 +80,8 @@ function SignIn ({onSignIn}) {
                                         required
                                         />
                                     </div>
-                                    {error !== "" && <div className = 'login'>{error}</div>}
+                                    <br/>
+                                    {error !== "" &&  <div className = 'alert alert-danger'>{error}</div>}
                                     <button className = {'btn btn-primary'} style = {{'margin-top':20}} type = 'submit'>Submit</button>
 
                                 </form>

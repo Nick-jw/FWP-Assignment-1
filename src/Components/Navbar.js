@@ -7,8 +7,8 @@ function Navbar ({loggedInUser, onLogout}) {
     const navigate = useNavigate();
 
     return (
-        <nav className={"navbar navbar-expand-lg navbar-dark bg-dark "}>
-            <div className = {"container-fluid"}>
+        <nav className={"navbar sticky-top navbar-expand-lg navbar-dark bg-dark "}>
+            <div className = {"container-fluid "}>
                 <Link to= "/" className = "navbar-brand p-2" ><h1 className = "display-5">Loop Agile Now</h1></Link>
                 {loggedInUser ? (
                     <ul className={"nav justify-content-between"}>
