@@ -1,7 +1,7 @@
 import React from 'react';
 import pic1 from '../Images/work.jpg'
 import pic2 from'../Images/pc.jpg'
-import bg from '../Images/bg.jpg'
+
 
 
 
