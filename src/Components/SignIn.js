@@ -5,16 +5,18 @@ import { useNavigate } from 'react-router-dom';
 
 
 function SignIn ({onSignIn}) {
-
+    
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
+
     let user_list = JSON.parse(localStorage.getItem('users'))
     if (user_list === null) {
     user_list = []  
     }
+
 
     const handleSubmit = event => {
         event.preventDefault();
