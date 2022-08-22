@@ -10,16 +10,14 @@ function SignIn ({onSignIn}) {
     const[password, setPassword] = useState("");
     const [error, setError] = useState("")
     const navigate = useNavigate()
-<<<<<<< HEAD
-    
-=======
+
 
     let user_list = JSON.parse(localStorage.getItem('users'))
     if (user_list === null) {
     user_list = []  
     }
 
->>>>>>> ca46ec8fbba3ada23e164be8e9c3f2628d160537
+
     const handleSubmit = event => {
         event.preventDefault();
         setError("")
