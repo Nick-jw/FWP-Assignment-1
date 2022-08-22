@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const USERNAME = 'a@hotmail.com';
 const PASSWORD = 'a';
 
-function SignIn ({onSignin}) {
+function SignIn ({onSignIn}) {
 
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
@@ -16,7 +16,7 @@ function SignIn ({onSignin}) {
         setError("")
         
         if (email === USERNAME && password === PASSWORD) {
-            //onSignin(email);
+            onSignIn(email);
             navigate('/feed', {replace: true});
         } else{
             setError('Login failed!');
