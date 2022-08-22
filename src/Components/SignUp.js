@@ -6,6 +6,7 @@ function SignUp () {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
+
     const onUserChange = (e) => {
         setUsername(e.target.value)
     }

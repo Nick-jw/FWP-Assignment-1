@@ -12,7 +12,7 @@ import {useState} from 'react'
 
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(localStorage.getItem("loggedInUser"));
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   const onSignIn = (email) => {
     setLoggedInUser(email)
