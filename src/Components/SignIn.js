@@ -6,11 +6,12 @@ const USERNAME = 'a@hotmail.com';
 const PASSWORD = 'a';
 
 function SignIn ({onSignIn}) {
-
+    
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const [error, setError] = useState("")
     const navigate = useNavigate()
+    
     const handleSubmit = event => {
         event.preventDefault();
         setError("")

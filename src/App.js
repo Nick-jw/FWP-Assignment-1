@@ -16,7 +16,7 @@ function App() {
 
   const onSignIn = (email) => {
     setLoggedInUser(email)
-    localStorage.setItem('loggedInUser',email)
+    localStorage.setItem('loggedInUser',JSON.stringify(email))
   };
   const onLogout = () => {
     setLoggedInUser(null)
