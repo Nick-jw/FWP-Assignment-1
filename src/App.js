@@ -28,8 +28,8 @@ function App() {
   return (
     <BrowserRouter>
       <div class = 'container-fluid  border-primary'>
-        <div class = 'row'>
-            <Navbar loggedInUser = {loggedInUser} onLogout = {onLogout}/>
+        <div class = 'row'>    
+            <Navbar loggedInUser = {loggedInUser} onLogout = {onLogout}/> 
         </div>
 
         <div class= 'row h-100'>

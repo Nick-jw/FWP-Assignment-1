@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp () {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const navigate = useNavigate()
 
 
     const onUserChange = (e) => {
@@ -21,7 +23,6 @@ function SignUp () {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const password_str = new String(password)
 
         const required_chars = /[!@#$%&]/
         if ((password.length >= 8) && required_chars.test(password)) {
@@ -41,7 +42,9 @@ function SignUp () {
 
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
-            alert("Form Submitted")
+            alert("Sign Up Successful")
+            navigate('/sign_in', {replace: true});
+            
         }
         else {
             alert("Password does not meet requirements\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
@@ -70,7 +73,7 @@ function SignUp () {
                                         <input className={"form-control"} type="text"  placeholder = 'John Smith'value={username} onChange={onUserChange} />
                                     </div>
                                     <div>
-                                        <label className={"col-sm-2 col-form-label h6"} for={"staticEmail"}>Email</label>
+                                        <label className={"col-sm-2 col-form-label h6"}>Email</label>
                                         <input className={"form-control"} type="email" placeholder = 'john@example.com' value={email} onChange={onEmailChange} />
                                     </div>
                                     <div>
