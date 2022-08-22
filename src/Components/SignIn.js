@@ -2,8 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const USERNAME = 'a@hotmail.com';
-const PASSWORD = 'a';
+
 
 function SignIn ({onSignIn}) {
 
@@ -11,16 +10,32 @@ function SignIn ({onSignIn}) {
     const[password, setPassword] = useState("");
     const [error, setError] = useState("")
     const navigate = useNavigate()
+
+    const user_list = JSON.parse(localStorage.getItem('users'))
+    if (user_list === null) {
+    user_list = []  
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
         setError("")
         
-        if (email === USERNAME && password === PASSWORD) {
+        let curr_user_index = -1
+        let valid_user = false
+        for (var i = 0; i < user_list.length; i++) {
+            if (user_list[i]['email'] === email) {
+                curr_user_index = i
+                valid_user = true 
+                break
+            }
+        }
+        if ((valid_user) && password === user_list[curr_user_index]['password']) {
             onSignIn(email);
             navigate('/feed', {replace: true});
         } else{
             setError('Login failed!');
         }
+        
     };
     
     
