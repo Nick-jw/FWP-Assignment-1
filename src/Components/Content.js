@@ -55,21 +55,7 @@ function Content () {
                         <br/>
 
 
-                        
-                        {/*Card 3*
-                        <div className= 'card '>
-                            <div className = 'row g-0'>
-                                <div className = 'col-md-4'>
-                                    <img className = 'card-img-bottom' src = {pic3} alt='bg'/>
-                                </div>
-                                <div className = 'col-md-8'>
-                                    <div className = 'card-body'>
-                                        <p className = 'card-text display-5 text-center'>Calling or chatting has never been simplier.</p>
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-    */}
+                    
 
 
                         
