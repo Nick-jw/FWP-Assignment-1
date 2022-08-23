@@ -11,19 +11,20 @@ function SignIn ({onSignIn}) {
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
-
+    // gets list of users from local storage for checking
     let user_list = JSON.parse(localStorage.getItem('users'))
     if (user_list === null) {
     user_list = []  
     }
 
-
+    // on form submission
     const handleSubmit = event => {
         event.preventDefault();
         setError("")
         
         let curr_user_index = -1
         let valid_user = false
+        // finds matching email input
         for (var i = 0; i < user_list.length; i++) {
             if (user_list[i]['email'] === email) {
                 curr_user_index = i
@@ -31,8 +32,9 @@ function SignIn ({onSignIn}) {
                 break
             }
         }
+        //validates matching email input with respective passwords and password input
         if ((valid_user) && password === user_list[curr_user_index]['password']) {
-            onSignIn(email);
+            onSignIn(email); // see app.js
             navigate('/profile', {replace: true});
         } else{
             setError('Login failed! Email or password do not match');
@@ -81,6 +83,7 @@ function SignIn ({onSignIn}) {
                                         />
                                     </div>
                                     <br/>
+                                    {/*true of false for error display */}
                                     {error !== "" &&  <div className = 'alert alert-danger'>{error}</div>}
                                     <button className = {'btn btn-primary'} style = {{'margin-top':20}} type = 'submit'>Submit</button>
 
