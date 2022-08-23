@@ -16,7 +16,7 @@ function Navbar ({loggedInUser, onLogout}) {
                     <ul className={"nav justify-content-between"}>
                         <li className="nav-item">
                             <div className = {"nav-link p-3"} >
-                                <button type = "button" class = "btn btn-light btn-lg btn-rounded"
+                                <button type = "button" className = "btn btn-light btn-lg btn-rounded"
                                 onClick={() => {
                                     navigate("/feed", {replace : true,})
 
