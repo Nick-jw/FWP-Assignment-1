@@ -6,6 +6,7 @@ function SignUp () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [error, setError] = useState("")
     const navigate = useNavigate()
 
 
@@ -42,12 +43,11 @@ function SignUp () {
 
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
-            alert("Sign Up Successful")
-            navigate('/sign_in', {replace: true});
+            setError("")
             
         }
         else {
-            alert("Password does not meet requirements\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
+            setError("Password does not meet requirements:\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
         }
     }
 
@@ -80,6 +80,9 @@ function SignUp () {
                                         <label className={"col-sm-2 col-form-label h6"}>Password</label>
                                         <input className={"form-control"} type="password" placeholder = 'password'value={password} onChange={onPassChange} />
                                     </div>
+                                    <br/>
+                                    {error !== "" &&  <div className = 'alert alert-danger'>{error}</div>}
+                                    {error === "" &&  <div className = 'alert alert-success'>Sign up successful</div>}
                                     <button className={"btn btn-primary"} style={{"margin-top":20}} type="submit">Submit</button>
                                 </form>
                             </div>

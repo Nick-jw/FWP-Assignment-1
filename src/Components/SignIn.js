@@ -33,7 +33,7 @@ function SignIn ({onSignIn}) {
         }
         if ((valid_user) && password === user_list[curr_user_index]['password']) {
             onSignIn(email);
-            navigate('/', {replace: true});
+            navigate('/profile', {replace: true});
         } else{
             setError('Login failed! Email or password do not match');
         }
