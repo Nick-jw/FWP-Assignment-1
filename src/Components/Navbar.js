@@ -9,11 +9,24 @@ function Navbar ({loggedInUser, onLogout}) {
     return (
         <nav className={"navbar navbar-expand-lg navbar-dark bg-dark sticky-top"}>
             <div className = {"container-fluid "}>
-                <Link to= "/" className = "navbar-brand p-2" ><h1 className = "display-5">Loop Agile Now</h1></Link>
                 {loggedInUser ? (
-                    
-                    
+                    <><div className = "navbar-brand p-2">
+                        <h1 className = "display-5">Loop Agile Now</h1>
+                    </div>
                     <ul className={"nav justify-content-between"}>
+                        <li className="nav-item">
+                            <div className = {"nav-link p-3"} >
+                                <button type = "button" class = "btn btn-light btn-lg btn-rounded"
+                                onClick={() => {
+                                    navigate("/profile", {replace : true,})
+
+                                }}
+                                >
+                                    <h6 className = "display-7">Profile</h6>
+                                </button>
+                                
+                            </div>
+                        </li>
                         <li className="nav-item">
                             <div className = {"nav-link p-3"} >
                                 <button type = "button" class = "btn btn-light btn-lg btn-rounded"
@@ -41,8 +54,9 @@ function Navbar ({loggedInUser, onLogout}) {
                                 
                             </div>
                         </li>
-                </ul>
+                </ul></>
                 ) : (
+                    <><Link to= "/" className = "navbar-brand p-2" ><h1 className = "display-5">Loop Agile Now</h1></Link>
                     <ul className={"nav justify-content-between"}>
                     <li className="nav-item">
                         <Link to= "sign_in" className = {"nav-link p-3"} ><button type = "button" class = "btn btn-light btn-lg btn-rounded"><h6 className = "display-7">Sign In</h6></button></Link>
@@ -50,7 +64,7 @@ function Navbar ({loggedInUser, onLogout}) {
                     <li className={"nav-item"}>
                         <Link to= "sign_up" className = {"nav-link p-3"} > <button type = "button" class = "btn btn-light btn-lg btn-rounded"><h6 className = "display-7">Sign Up</h6></button></Link>
                     </li>
-                </ul>
+                </ul></>
                 )}
 
             </div>
