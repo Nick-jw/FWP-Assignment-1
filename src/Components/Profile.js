@@ -61,27 +61,27 @@ function Profile () {
                                             </button>
                                             <br/>
                                             <br/>
-                                       
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-       Are you sure you want to delete your account? <br/>THIS IS PERMENANT!!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+                                            {/*Modal for deleting profile */}     
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                        Are you sure you want to delete your account? <br/>THIS IS PERMENANT!!
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
                     </div>
                     
 
