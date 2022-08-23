@@ -7,12 +7,8 @@ function SignUp () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-<<<<<<< HEAD
-    const [error, setError] = useState("")
-=======
-    {/* Router setup for redirecting on successful login */}
->>>>>>> 8b210d6655d466bcdc7ee7cc328c7cbf197303ff
     const navigate = useNavigate()
+    const [error,setError] = useState()
 
 
     {/* Record input values in state variables */}
@@ -57,23 +53,12 @@ function SignUp () {
             {/* Adds new user to user list and pushes to local storage */}
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
-<<<<<<< HEAD
-            setError("")
-            
-        }
-        else {
-            setError("Password does not meet requirements:\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
-=======
-
-            {/* Notifies user and redirects to sign in page on success */}
             alert("Sign Up Successful")
             navigate('/sign_in', {replace: true});
             
         }
         else {
-            {/* When strong password check fails, notifies user of requirements */}
             alert("Password does not meet requirements\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
->>>>>>> 8b210d6655d466bcdc7ee7cc328c7cbf197303ff
         }
     }
 
