@@ -9,14 +9,27 @@ function Navbar ({loggedInUser, onLogout}) {
     return (
         <nav className={"navbar navbar-expand-lg navbar-dark bg-dark sticky-top"}>
             <div className = {"container-fluid "}>
-                <Link to= "/" className = "navbar-brand p-2" ><h1 className = "display-5">Loop Agile Now</h1></Link>
-                {loggedInUser ? (
-                    
-                    
+                {loggedInUser ? ( //user is logged in display profile/feed/log out button; unacitve h1
+                    <><div className = "navbar-brand p-2">
+                        <h1 className = "display-5">Loop Agile Now</h1>
+                    </div>
                     <ul className={"nav justify-content-between"}>
                         <li className="nav-item">
                             <div className = {"nav-link p-3"} >
                                 <button type = "button" className = "btn btn-light btn-lg btn-rounded"
+                                onClick={() => {
+                                    navigate("/profile", {replace : true,})
+
+                                }}
+                                >
+                                    <h6 className = "display-7">Profile</h6>
+                                </button>
+                                
+                            </div>
+                        </li>
+                        <li className="nav-item">
+                            <div className = {"nav-link p-3"} >
+                                <button type = "button" class = "btn btn-light btn-lg btn-rounded"
                                 onClick={() => {
                                     navigate("/feed", {replace : true,})
 
@@ -31,7 +44,7 @@ function Navbar ({loggedInUser, onLogout}) {
                             <div className = {"nav-link p-3"} >
                                 <button type = "button" class = "btn btn-light btn-lg btn-rounded"
                                 onClick={() => {
-                                    onLogout()
+                                    onLogout() // see app.js
                                     navigate("/", {replace : true,})
 
                                 }}
@@ -41,8 +54,9 @@ function Navbar ({loggedInUser, onLogout}) {
                                 
                             </div>
                         </li>
-                </ul>
-                ) : (
+                </ul></>
+                ) : ( //user is not loggedin sign up/ sign in button; acitve h1
+                    <><Link to= "/" className = "navbar-brand p-2" ><h1 className = "display-5">Loop Agile Now</h1></Link>
                     <ul className={"nav justify-content-between"}>
                     <li className="nav-item">
                         <Link to= "sign_in" className = {"nav-link p-3"} ><button type = "button" class = "btn btn-light btn-lg btn-rounded"><h6 className = "display-7">Sign In</h6></button></Link>
@@ -50,7 +64,7 @@ function Navbar ({loggedInUser, onLogout}) {
                     <li className={"nav-item"}>
                         <Link to= "sign_up" className = {"nav-link p-3"} > <button type = "button" class = "btn btn-light btn-lg btn-rounded"><h6 className = "display-7">Sign Up</h6></button></Link>
                     </li>
-                </ul>
+                </ul></>
                 )}
 
             </div>

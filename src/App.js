@@ -7,6 +7,7 @@ import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
 import Feed from './Components/Feed';
 import Profile from './Components/Profile'
+import Update from "./Components/Update"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {useState} from 'react'
 
@@ -41,6 +42,7 @@ function App() {
             <Route path = "sign_up" element = {<SignUp/>} />
             <Route path = 'feed' element = {<Feed/>}/>
             <Route path = 'profile' element = {<Profile/>}/>
+            <Route path = 'update' element = {<Update/>}/>
           </Routes>
 
             
