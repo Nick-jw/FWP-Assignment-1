@@ -3,13 +3,19 @@ import { useNavigate } from 'react-router-dom';
 
 function SignUp () {
 
+    {/* Variables to hold state of login information */}
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+<<<<<<< HEAD
     const [error, setError] = useState("")
+=======
+    {/* Router setup for redirecting on successful login */}
+>>>>>>> 8b210d6655d466bcdc7ee7cc328c7cbf197303ff
     const navigate = useNavigate()
 
 
+    {/* Record input values in state variables */}
     const onUserChange = (e) => {
         setUsername(e.target.value)
     }
@@ -22,18 +28,25 @@ function SignUp () {
         setEmail(e.target.value)
     }
 
+
+
     const onSubmit = (e) => {
         e.preventDefault()
 
+        {/* Regex of 'special characters' required for a strong password */}
         const required_chars = /[!@#$%&]/
+
+        {/* Check if password is 'strong' (8 chars long and has 1 special char) */}
         if ((password.length >= 8) && required_chars.test(password)) {
 
+            {/* Gets array of users from local storage, initializes to empty array if null */}
             let users_list = JSON.parse(localStorage.getItem('users'))
 
             if (users_list === null) {  
             users_list = [] 
             }   
 
+            {/* Data structure for saving user data */}
             let curr_user = {
                 'username': username,
                 'email': email,
@@ -41,13 +54,26 @@ function SignUp () {
                 'posts': []
             }
 
+            {/* Adds new user to user list and pushes to local storage */}
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
+<<<<<<< HEAD
             setError("")
             
         }
         else {
             setError("Password does not meet requirements:\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
+=======
+
+            {/* Notifies user and redirects to sign in page on success */}
+            alert("Sign Up Successful")
+            navigate('/sign_in', {replace: true});
+            
+        }
+        else {
+            {/* When strong password check fails, notifies user of requirements */}
+            alert("Password does not meet requirements\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
+>>>>>>> 8b210d6655d466bcdc7ee7cc328c7cbf197303ff
         }
     }
 
