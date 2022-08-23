@@ -72,8 +72,12 @@ function Profile ({onLogout}) {
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                                             onClick = {() =>{
-                                                                onLogout()
-                                                                navigate('/', {replace:true,})
+                                                                //splices user list to remove current sign in email and overwrites data
+                                                                user_list.splice(curr_user_index,1)
+                                                                localStorage.setItem('users', JSON.stringify(user_list))
+                                                                
+                                                                onLogout() // logs out user to display sign in and out button
+                                                                navigate('/', {replace:true,}) // returns to home page after user deletes acc
                                                             }}
                                                             >Confirm</button>
                                                         </div>
