@@ -10,6 +10,7 @@ function Profile () {
         }
     }
     let name = user_list[curr_user_index]['username']
+    let join_date = user_list[curr_user_index]['joinDate']
     return (
         <div className = {"content col-lg-12 h-100"}>
             <div className={"container-fluid"}>
@@ -22,7 +23,7 @@ function Profile () {
                         
                     {/* This div contains all main content*/}
                     <div className={"col-sm-10 bg-light"} style={{minHeight:500}}>
-                        <h1 className= 'text-center'>My profile</h1>
+                        <h1 className= 'text-center' style={{paddingTop: 30}}>My profile</h1>
                             <div className = 'container py-5 h-100 w-75'>
                                 <div className='row d-flex justify-content-center align-items-center h-100'>
                                     <div className='card' style = {{borderRadius:'15px'}}>
@@ -33,7 +34,7 @@ function Profile () {
                                             </div>
                                             <h4 className='mb-2'> {name}</h4>
                                             <p className='text-muted mb-4'>{email}</p>
-                                            <p className='text-muted mb-4'>Joined: 04/02/20222</p>
+                                            <p className='text-muted mb-4'>Joined: {join_date}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -7,8 +7,9 @@ function SignUp () {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [status, setStatus] = useState("none")
     const navigate = useNavigate()
-    const [error,setError] = useState()
+    
 
 
     {/* Record input values in state variables */}
@@ -24,6 +25,7 @@ function SignUp () {
         setEmail(e.target.value)
     }
 
+    let curr_date = new Date().toDateString().slice(4)
 
 
     const onSubmit = (e) => {
@@ -47,18 +49,18 @@ function SignUp () {
                 'username': username,
                 'email': email,
                 'password': password,
+                'joinDate': curr_date,
                 'posts': []
             }
 
             {/* Adds new user to user list and pushes to local storage */}
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
-            alert("Sign Up Successful")
-            navigate('/sign_in', {replace: true});
+            setStatus("success")
             
         }
         else {
-            alert("Password does not meet requirements\nMust be at least 8 characters long\nMust contain one of ' ! @ # $ % & '")
+            setStatus("fail")
         }
     }
 
@@ -92,8 +94,10 @@ function SignUp () {
                                         <input className={"form-control"} type="password" placeholder = 'password'value={password} onChange={onPassChange} />
                                     </div>
                                     <br/>
-                                    {error !== "" &&  <div className = 'alert alert-danger'>{error}</div>}
-                                    {error === "" &&  <div className = 'alert alert-success'>Sign up successful</div>}
+
+                                    {status === 'fail' &&  <div className = 'alert alert-danger'>Password does not meet requirements: <br></br>&nbsp;&nbsp;&nbsp;&nbsp;Must be 8 characters long<br></br>&nbsp;&nbsp;&nbsp;&nbsp;Must contain one of ! @ # $ % &</div>}
+                                    {status === 'success' &&  <div className = 'alert alert-success'>Sign up successful</div>}
+
                                     <button className={"btn btn-primary"} style={{"margin-top":20}} type="submit">Submit</button>
                                 </form>
                             </div>
