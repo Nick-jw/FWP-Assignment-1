@@ -17,19 +17,21 @@ function Content () {
                     <div className={"col-sm-1"}></div>
                         
                     {/* This div contains all main content*/}
-                    <div className={"col-sm-10 bg-light"} style={{minHeight:500}}>
+                    <div className={"col-sm-10 bg-light text-center"} style={{minHeight:500}}>
                         <br/>
-                        <blockquote className={" display-4 text-center fst-italic"}>Introducing Loop Agile own intra-firm social media platform. Create an account to start linking!</blockquote>
+                        <p className='display-1'>Loop Agile <strong><em>Now</em></strong></p>
+
+                        <blockquote className={"h3 text-center"}>Create an account to start linking!</blockquote>
                         <br/>
                         {/*Card 1*/}
-                        <div className= 'card '>
+                        <div className= 'card'>
                             <div className = 'row g-0'>
                                 <div className = 'col-md-4'>
                                     <img className = 'card-img img-fluid ' src = {pic1} alt='bg'/>
                                 </div>
                                 <div className = 'col-md-8 text-center'>
                                     <div className = 'card-body'>
-                                        <p className = 'card-text display-5 text-center '>Collaborating with colleages is now made simplier and easy to use.</p>
+                                        <p className = 'card-text display-5 text-center'>Collaborating with colleages is now made simplier and easy to use.</p>
                                     </div>
                                 </div>  
                             </div>
