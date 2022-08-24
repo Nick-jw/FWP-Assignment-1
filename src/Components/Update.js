@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -22,29 +22,49 @@ function Update () {
 
     let curr_username = user_list[curr_user_index]['username']
     let curr_password = user_list[curr_user_index]['password']
-    let curr_date = user_list[curr_user_index]['joinDate']
 
 
 
-    const [username, setUsername] = useState(curr_username);
-    const [email, setEmail] = useState(curr_email);
-    const [password, setPassword] = useState(curr_password);
+
+    const [form,setForm] = useState({
+    })
+
+    const handleChange = (field) => (event) => {
+        setForm(form => ({...form, [field]: event.target.value}))
+    }
 
     
-    const [data,setData] = useState ([{
-        'username' : curr_username,
-        'email' : curr_email,
-        'password': curr_password,
-        'joinDate': curr_date
-    }])
+    const [data,setData] = useState (
+        localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users'))
+        :[]
+
+    )
+
+    useEffect(() => {
+        localStorage.setItem('users', JSON.stringify(data),[data])
+    })
 
 
 
     const onSubmit = (event) => {
         event.preventDefault();
+        setData((data) => {
+            let newData = [...data];
+            newData = newData.map((entry) => {
+                if (entry.username === form.username) {
+                    return form;
+                } else{
+                    return entry
+                }
+            })
+            if (!newData.find((entry) => entry.username === form.username)) {
+                newData.push(form)
+            }
+            
+            return newData
+        })
 
-
-        }
+    }
 
     
     return (
@@ -63,16 +83,16 @@ function Update () {
                                 <form onSubmit = {onSubmit}>
                                     <div>
                                         <label className = 'col-sm-2 col-form-label h6'>Name</label>
-                                        <input className = 'form-control' type = 'text' placeholder = 'Name' value ={username} onChange = {event =>{setUsername(event.target.value)}}/>
+                                        <input className = 'form-control' type = 'text' placeholder = 'username' value ={form.username} onChange = {handleChange('username')}/>
 
                                     </div>
                                     <div>
                                         <label className = 'col-sm-2 col-form-label h6'>Email</label>
-                                        <input className = 'form-control' type = 'email' placeholder = 'Email' value = {email} onChange = {event => {setEmail(event.target.value)}}/>
+                                        <input className = 'form-control' type = 'email' placeholder = 'email' value = {form.email} onChange = {handleChange('email')}/>
                                     </div>
                                     <div>
                                     <label className = 'col-sm-2 col-form-label h6'>Password</label>
-                                    <input className = 'form-control' type = 'password' placeholder = 'Password' value = {password} onChange = {event => {setPassword(event.target.value)}}/>
+                                    <input className = 'form-control' type = 'password' placeholder = 'password' value = {form.password} onChange =  {handleChange('password')}/>
                                     </div>
 
                                     <div className = 'container d-flex justify-content-between'>
