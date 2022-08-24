@@ -41,8 +41,8 @@ function App() {
             <Route path = "sign_in" element = {<SignIn onSignIn = {onSignIn} />} />
             <Route path = "sign_up" element = {<SignUp/>} />
             <Route path = 'feed' element = {<Feed/>}/>
-            <Route path = 'profile' element = {<Profile/>}/>
-            <Route path = 'update' element = {<Update/>}/>
+            <Route path = 'profile' element = {<Profile onLogout = {onLogout}/>}/>
+            <Route path = 'update' element = {<Update />}/>
           </Routes>
 
             
