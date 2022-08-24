@@ -98,7 +98,7 @@ function SignUp () {
                                     {status === 'fail' &&  <div className = 'alert alert-danger'>Password does not meet requirements: <br></br>&nbsp;&nbsp;&nbsp;&nbsp;Must be 8 characters long<br></br>&nbsp;&nbsp;&nbsp;&nbsp;Must contain one of ! @ # $ % &</div>}
                                     {status === 'success' &&  <div className = 'alert alert-success'>Sign up successful</div>}
 
-                                    <button className={"btn btn-primary"} style={{"margin-top":20}} type="submit">Submit</button>
+                                    <button className={"btn btn-primary"} style={{marginTop:20}} type="submit">Submit</button>
                                 </form>
                             </div>
                         </div>
