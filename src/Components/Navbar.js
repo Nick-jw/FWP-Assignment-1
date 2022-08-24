@@ -10,9 +10,7 @@ function Navbar ({loggedInUser, onLogout}) {
         <nav className={"navbar navbar-expand-lg navbar-dark bg-dark sticky-top"}>
             <div className = {"container-fluid "}>
                 {loggedInUser ? ( //user is logged in display profile/feed/log out button; unacitve h1
-                    <><div className = "navbar-brand p-2">
-                        <h1 className = "display-5">Loop Agile Now</h1>
-                    </div>
+                        <><Link to= "/" className = "navbar-brand p-2" ><h1 className = "display-5">Loop Agile Now</h1></Link>
                     <ul className={"nav justify-content-between"}>
                         <li className="nav-item">
                             <div className = {"nav-link p-3"} >
