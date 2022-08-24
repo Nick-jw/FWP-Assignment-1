@@ -61,6 +61,7 @@ function Profile ({onLogout}) {
                                             </button>
                                             <br/>
                                             <br/>
+                                            
                                             {/*Modal for deleting profile */}     
                                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -75,7 +76,6 @@ function Profile ({onLogout}) {
                                                                 //splices user list to remove current sign in email and overwrites data
                                                                 user_list.splice(curr_user_index,1)
                                                                 localStorage.setItem('users', JSON.stringify(user_list))
-                                                                
                                                                 onLogout() // logs out user to display sign in and out button
                                                                 navigate('/', {replace:true,}) // returns to home page after user deletes acc
                                                             }}
@@ -91,12 +91,12 @@ function Profile ({onLogout}) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
                     
 
-                    {/*Empty column for the right sidebar */}
-                    <div className={"col-sm-1"}></div>
-                </div>
+                {/*Empty column for the right sidebar */}
+                <div className={"col-sm-1"}></div>
+            </div>
         </div>
   
     )
