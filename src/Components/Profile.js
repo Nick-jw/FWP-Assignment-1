@@ -1,7 +1,7 @@
 import React from 'react'
 import {useNavigate, useState} from 'react-router-dom'
 
-function Profile () {
+function Profile ({onLogout}) {
     let email = JSON.parse(localStorage.getItem('loggedInUser'));
     let user_list = JSON.parse(localStorage.getItem('users'));
     let curr_user_index = -1
@@ -61,33 +61,42 @@ function Profile () {
                                             </button>
                                             <br/>
                                             <br/>
-                                       
-<div class="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-       Are you sure you want to delete your account? <br/>THIS IS PERMENANT!!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+                                            
+                                            {/*Modal for deleting profile */}     
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                        Confirm to delete your account <br/>THIS IS PERMENANT!!
+                                                        </div>
+                                                        <div class="modal-footer ">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                                            onClick = {() =>{
+                                                                //splices user list to remove current sign in email and overwrites data
+                                                                user_list.splice(curr_user_index,1)
+                                                                localStorage.setItem('users', JSON.stringify(user_list))
+                                                                onLogout() // logs out user to display sign in and out button
+                                                                navigate('/', {replace:true,}) // returns to home page after user deletes acc
+                                                            }}
+                                                            >Confirm</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
-                    </div>
+                        </div>
+                </div>
                     
 
-                    {/*Empty column for the right sidebar */}
-                    <div className={"col-sm-1"}></div>
-                </div>
+                {/*Empty column for the right sidebar */}
+                <div className={"col-sm-1"}></div>
+            </div>
         </div>
   
     )
