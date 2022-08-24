@@ -4,6 +4,8 @@ import {useNavigate} from 'react-router-dom'
 
 function Update () {
     const navigate = useNavigate()
+
+
     //getting user list
     let user_list = JSON.parse(localStorage.getItem('users'))
     let curr_email = JSON.parse(localStorage.getItem('loggedInUser'))
@@ -20,17 +22,31 @@ function Update () {
 
     let curr_username = user_list[curr_user_index]['username']
     let curr_password = user_list[curr_user_index]['password']
+    let curr_date = user_list[curr_user_index]['joinDate']
 
 
 
     const [username, setUsername] = useState(curr_username);
     const [email, setEmail] = useState(curr_email);
     const [password, setPassword] = useState(curr_password);
-    const [status, setStatus] = useState();
 
-    const onSubmit = (e) => {
+    
+    const [data,setData] = useState ([{
+        'username' : curr_username,
+        'email' : curr_email,
+        'password': curr_password,
+        'joinDate': curr_date
+    }])
 
-    }
+
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+
+
+        }
+
+    
     return (
         <div className = 'content col-lg-12'>
             <div className = 'container-fluid'>
