@@ -19,10 +19,11 @@ function Content () {
                     {/* This div contains all main content*/}
                     <div className={"col-sm-10 bg-light text-center"} style={{minHeight:500}}>
                         <br/>
-                        <p className='display-1'>Loop Agile <strong><em>Now</em></strong></p>
+                        <p className='display-1'>Loop Agile &#x25AA; <strong><em>Now</em></strong></p>
 
                         <blockquote className={"h3 text-center"}>Create an account to start linking!</blockquote>
                         <br/>
+                        
                         {/*Card 1*/}
                         <div className= 'card'>
                             <div className = 'row g-0'>
