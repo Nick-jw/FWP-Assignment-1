@@ -7,6 +7,10 @@ function Profile ({onLogout}) {
     let curr_user_index = -1
     const navigate = useNavigate()
 
+    let posts = JSON.parse(localStorage.getItem('posts'));
+    if (posts === null) {
+        posts = []
+    }
 
     //obtains loggedInUser email array
     for (var i = 0; i < user_list.length; i++) {
@@ -15,9 +19,36 @@ function Profile ({onLogout}) {
             break
         }
     }
-    //saves name and join date for display 
+
+
+    //saves name and join date for display, user ID for deleting posts
     let name = user_list[curr_user_index]['username']
     let join_date = user_list[curr_user_index]['joinDate']
+
+
+    // When user deletes account, removes their details, logs out and removes posts made by them
+    const deleteUser = () => {
+    //splices user list to remove current sign in email and overwrites data
+    user_list.splice(curr_user_index,1)
+    localStorage.setItem('users', JSON.stringify(user_list))
+
+
+    // Removes posts by user in posts list
+    let j = posts.length
+    while (j--) {
+        if (posts[j].owner === name) {
+            console.log('post equals, splicing')
+            posts.splice(j, 1)
+        }
+    }
+
+    // Saves edited post list
+    localStorage.setItem('posts', JSON.stringify(posts))
+    
+    onLogout() // logs out user to display sign in and out button
+    navigate('/', {replace:true,}) // returns to home page after user deletes acc
+    }
+
     return (
         <div className = {"content col-lg-12 h-100"}>
             <div className={"container-fluid"}>
@@ -63,22 +94,16 @@ function Profile ({onLogout}) {
                                             <br/>
                                             
                                             {/*Modal for deleting profile */}     
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
-                                                        <div class="modal-body">
-                                                        Confirm to delete your account <br/>THIS IS PERMENANT!!
+                                                        <div class="modal-body text-center">
+                                                        Are you sure you want to delete your account?<br/>This action cannot be undone!
                                                         </div>
-                                                        <div class="modal-footer ">
+                                                        <div class="modal-footer d-flex justify-content-evenly">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                                            onClick = {() =>{
-                                                                //splices user list to remove current sign in email and overwrites data
-                                                                user_list.splice(curr_user_index,1)
-                                                                localStorage.setItem('users', JSON.stringify(user_list))
-                                                                onLogout() // logs out user to display sign in and out button
-                                                                navigate('/', {replace:true,}) // returns to home page after user deletes acc
-                                                            }}
+                                                            onClick = {deleteUser}
                                                             >Confirm</button>
                                                         </div>
                                                     </div>
