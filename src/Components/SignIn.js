@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,6 +16,11 @@ function SignIn ({onSignIn}) {
     if (user_list === null) {
     user_list = []  
     }
+
+    useEffect(() => {
+        document.getElementById('emailInput').focus();
+    })
+    
 
     // on form submission
     const handleSubmit = event => {
@@ -63,9 +68,10 @@ function SignIn ({onSignIn}) {
                                     <div>
                                         <label className = {'col-sm2 col-form-label h6'}>Email</label>
                                         <input className = {'form-control'}
+                                        id = 'emailInput'
                                         type = 'email'
                                         name = 'email'
-                                        placeholder='john@example.com'
+                                        placeholder='John@example.com'
                                         value = {email}
                                         onChange = {event => {setEmail(event.target.value)}}
                                         required
@@ -76,7 +82,7 @@ function SignIn ({onSignIn}) {
                                         <input className= {'form-control'}
                                         type = 'password'
                                         name = 'password'
-                                        placeholder = 'password'
+                                        placeholder = 'Password'
                                         value = {password}
                                         onChange = {event => {setPassword(event.target.value)}}
                                         required

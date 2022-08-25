@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SignUp () {
@@ -10,6 +10,10 @@ function SignUp () {
     const [status, setStatus] = useState("none")
     const navigate = useNavigate()
     
+
+    useEffect(() => {
+        document.getElementById('nameInput').focus()
+    })
 
 
     {/* Record input values in state variables */}
@@ -83,15 +87,31 @@ function SignUp () {
                                 <form onSubmit={onSubmit}>
                                     <div>
                                         <label className={"col-sm-2 col-form-label h6"}>Name</label>
-                                        <input className={"form-control"} type="text"  placeholder = 'John Smith'value={username} onChange={onUserChange} />
+                                        <input
+                                        id = 'nameInput' 
+                                        className={"form-control"} 
+                                        type="text"  
+                                        placeholder = 'John Smith'
+                                        value={username} 
+                                        onChange={onUserChange} />
                                     </div>
                                     <div>
                                         <label className={"col-sm-2 col-form-label h6"}>Email</label>
-                                        <input className={"form-control"} type="email" placeholder = 'john@example.com' value={email} onChange={onEmailChange} />
+                                        <input 
+                                        className={"form-control"} 
+                                        type="email" 
+                                        placeholder = 'John@example.com' 
+                                        value={email} 
+                                        onChange={onEmailChange} />
                                     </div>
                                     <div>
                                         <label className={"col-sm-2 col-form-label h6"}>Password</label>
-                                        <input className={"form-control"} type="password" placeholder = 'password'value={password} onChange={onPassChange} />
+                                        <input 
+                                        className={"form-control"} 
+                                        type="password" 
+                                        placeholder = 'Password'
+                                        value={password} 
+                                        onChange={onPassChange} />
                                     </div>
                                     <br/>
 
