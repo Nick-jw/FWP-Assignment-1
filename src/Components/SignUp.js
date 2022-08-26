@@ -13,7 +13,7 @@ function SignUp () {
 
     useEffect(() => {
         document.getElementById('nameInput').focus()
-    })
+    },[])
 
 
     {/* Record input values in state variables */}
@@ -61,6 +61,9 @@ function SignUp () {
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
             setStatus("success")
+            setUsername("")
+            setEmail("")
+            setPassword("")
             
         }
         else {
