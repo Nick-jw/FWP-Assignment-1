@@ -19,50 +19,45 @@ function Update () {
             break
         }
      }
-
+    // logged in username and password for modification
     let curr_username = user_list[curr_user_index]['username']
     let curr_password = user_list[curr_user_index]['password']
+    let curr_date = user_list[curr_user_index]['date']
 
+   
 
-
-
-    const [form,setForm] = useState({
-    })
+    const [form,setForm] = useState({})
 
     const handleChange = (field) => (event) => {
-        setForm(form => ({...form, [field]: event.target.value}))
+        setForm((form) => ({...form, [field]: event.target.value}));
     }
 
-    
-    const [data,setData] = useState (
-        localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users'))
-        :[]
-
-    )
+    const[data, setData] = useState(localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')):[])
 
     useEffect(() => {
-        localStorage.setItem('users', JSON.stringify(data),[data])
-    })
-
-
+        localStorage.setItem('users',JSON.stringify(data));
+    }, [data]);
+    
 
     const onSubmit = (event) => {
-        event.preventDefault();
-        setData((data) => {
+        event.preventDefault()
+        setData ((data) =>{
             let newData = [...data];
-            newData = newData.map((entry) => {
-                if (entry.username === form.username) {
+
+            newData = newData.map ((entry) => {
+                if (entry.email === form.email) {
                     return form;
-                } else{
-                    return entry
                 }
+                else{
+                    return entry;
+                }
+                
+                
             })
-            if (!newData.find((entry) => entry.username === form.username)) {
-                newData.push(form)
-            }
-            
             return newData
-        })
+        });
+        
+
 
     }
 
@@ -87,9 +82,10 @@ function Update () {
 
                                     </div>
                                     <div>
-                                        <label className = 'col-sm-2 col-form-label h6'>Email</label>
-                                        <input className = 'form-control' type = 'email' placeholder = 'email' value = {form.email} onChange = {handleChange('email')}/>
+                                    <label className = 'col-sm-2 col-form-label h6'>Email</label>
+                                    <input className = 'form-control' type = 'email' placeholder = 'email' value = {form.email} onChange =  {handleChange('email')}/>
                                     </div>
+
                                     <div>
                                     <label className = 'col-sm-2 col-form-label h6'>Password</label>
                                     <input className = 'form-control' type = 'password' placeholder = 'password' value = {form.password} onChange =  {handleChange('password')}/>
