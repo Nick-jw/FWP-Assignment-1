@@ -18,8 +18,8 @@ function SignIn ({onSignIn}) {
     }
 
     useEffect(() => {
-        document.getElementById('emailInput').focus();
-    })
+        document.getElementById('emailInput').focus()
+    },[]);
     
 
     // on form submission
