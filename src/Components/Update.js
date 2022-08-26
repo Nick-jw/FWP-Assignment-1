@@ -33,7 +33,7 @@ function Update () {
     }
 
     const[data, setData] = useState(localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')):[])
-
+    console.log(data)
     useEffect(() => {
         localStorage.setItem('users',JSON.stringify(data));
     }, [data]);
@@ -57,7 +57,7 @@ function Update () {
             return newData
         });
         
-
+        navigate('/profile', {replace:true,})
 
     }
 
@@ -78,17 +78,17 @@ function Update () {
                                 <form onSubmit = {onSubmit}>
                                     <div>
                                         <label className = 'col-sm-2 col-form-label h6'>Name</label>
-                                        <input className = 'form-control' type = 'text' placeholder = 'username' value ={form.username} onChange = {handleChange('username')}/>
+                                        <input className = 'form-control' type = 'text' placeholder = 'Username' value ={form.username} onChange = {handleChange('username')}/>
 
                                     </div>
                                     <div>
                                     <label className = 'col-sm-2 col-form-label h6'>Email</label>
-                                    <input className = 'form-control' type = 'email' placeholder = 'email' value = {form.email} onChange =  {handleChange('email')}/>
+                                    <input className = 'form-control' type = 'email' placeholder = 'Email' value = {form.email} onChange =  {handleChange('email')}/>
                                     </div>
 
                                     <div>
                                     <label className = 'col-sm-2 col-form-label h6'>Password</label>
-                                    <input className = 'form-control' type = 'password' placeholder = 'password' value = {form.password} onChange =  {handleChange('password')}/>
+                                    <input className = 'form-control' type = 'password' placeholder = 'Password' value = {form.password} onChange =  {handleChange('password')}/>
                                     </div>
 
                                     <div className = 'container d-flex justify-content-between'>
@@ -98,11 +98,7 @@ function Update () {
                                         }}>
                                             Cancel
                                         </button>
-                                        <button type = 'button' className = 'btn btn-lg btn-info btn-rounded  m-3'
-                                        onClick = {() => {
-                                            onSubmit()
-                                            navigate('/profile', {replace:true,})
-                                        }}
+                                        <button type = 'submit' className = 'btn btn-lg btn-info btn-rounded  m-3'
                                         >
                                             Save changes
                                         </button>
