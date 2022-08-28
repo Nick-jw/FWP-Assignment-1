@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 function SignIn ({onSignIn}) {
 
     //constants 
-    const[email, setEmail] = useState("");
-    const[password, setPassword] = useState("");
-    const [error, setError] = useState("")
+    const[email, setEmail] = useState(""); // email setter
+    const[password, setPassword] = useState(""); //password setter
+    const [error, setError] = useState("") // error message success or fail
     const navigate = useNavigate()
 
     // gets list of users from local storage for checking
@@ -17,7 +17,7 @@ function SignIn ({onSignIn}) {
     if (user_list === null) {
     user_list = []  
     }
-    
+
     //focuses first input on first render
     useEffect(() => {
         document.getElementById('emailInput').focus()
@@ -44,7 +44,7 @@ function SignIn ({onSignIn}) {
             onSignIn(email); // see app.js
             navigate('/profile', {replace: true});
         } else{
-            setError('Login failed! Email or password do not match');
+            setError('Login failed! Email or password do not match'); // error = fail
         }
         
     };
