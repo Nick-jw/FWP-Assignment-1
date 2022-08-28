@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 function SignIn ({onSignIn}) {
-    
+
+    //constants 
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const [error, setError] = useState("")
@@ -16,7 +17,8 @@ function SignIn ({onSignIn}) {
     if (user_list === null) {
     user_list = []  
     }
-
+    
+    //focuses first input on first render
     useEffect(() => {
         document.getElementById('emailInput').focus()
     },[]);
