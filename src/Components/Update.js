@@ -115,7 +115,7 @@ function Update () {
                                         }}>
                                             Cancel
                                         </button>
-                                        <button type = 'submit' className = 'btn btn-lg btn-info btn-rounded  m-3'
+                                        <button type = 'submit'  className = 'btn btn-lg btn-info btn-rounded  m-3'
                                         >
                                             Save changes
                                         </button>
