@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useEffect,useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -28,6 +28,9 @@ function Update () {
     let post_list = JSON.parse(localStorage.getItem('posts'))
 
    
+    useEffect(() => {
+        document.getElementById('nameInput').focus()
+    }, [])
 
     const [status, setStatus] = useState('')
 
@@ -98,7 +101,7 @@ function Update () {
                                 <form  onSubmit = {onSubmit}>
                                     <div>
                                         <label className = 'col-sm-2 col-form-label h6'>Name</label>
-                                        <input className = 'form-control' type = 'text' placeholder = 'Username' onChange = {handleNameChange}/>
+                                        <input className = 'form-control' id='nameInput' type = 'text' placeholder = 'Username' onChange = {handleNameChange}/>
 
                                     </div>
                                     <div>
