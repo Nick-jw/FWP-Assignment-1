@@ -1,4 +1,4 @@
-import {React,useState, useEffect} from 'react'
+import {React,useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -22,45 +22,65 @@ function Update () {
     // logged in username and password for modification
     let curr_username = user_list[curr_user_index]['username']
     let curr_password = user_list[curr_user_index]['password']
-    let curr_date = user_list[curr_user_index]['date']
+    let curr_posts = user_list[curr_user_index]['posts']
+    let curr_joinDate = user_list[curr_user_index]['joinDate']
+
+    let post_list = JSON.parse(localStorage.getItem('posts'))
 
    
 
-    const [form,setForm] = useState({})
+    const [status, setStatus] = useState('')
 
-    const handleChange = (field) => (event) => {
-        setForm((form) => ({...form, [field]: event.target.value}));
+    const [newName, setNewName] = useState('')
+    const [newEmail, setNewEmail] = useState('')
+
+    const handleNameChange = (e) => {
+        setNewName(e.target.value)
+    }
+    const handleEmailChange = (e) => {
+        setNewEmail(e.target.value)
     }
 
-    const[data, setData] = useState(localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')):[])
-    console.log(data)
-    useEffect(() => {
-        localStorage.setItem('users',JSON.stringify(data));
-    }, [data]);
-    
+    const onSubmit = (e) => {
+        setStatus('')
+        e.preventDefault()
+        let nameToBeSet = curr_username
+        let emailToBeSet = curr_email
+        let passToBeSet = curr_password
 
-    const onSubmit = (event) => {
-        event.preventDefault()
-        setData ((data) =>{
-            let newData = [...data];
 
-            newData = newData.map ((entry) => {
-                if (entry.email === form.email) {
-                    return form;
+        if (newName !== '') {
+            nameToBeSet = newName
+
+            for (let post of post_list) {
+                if (post.owner === curr_username) {
+                    post.owner = newName
                 }
-                else{
-                    return entry;
-                }
-                
-                
-            })
-            return newData
-        });
-        
-        navigate('/profile', {replace:true,})
+            }
 
+            localStorage.setItem('posts', JSON.stringify(post_list))
+
+        }
+        if (newEmail !== '') {
+            emailToBeSet = newEmail
+            localStorage.setItem('loggedInUser', JSON.stringify(newEmail))
+        }
+
+        let newUserInfo = {
+            username: nameToBeSet,
+            email: emailToBeSet,
+            password: passToBeSet,
+            joinDate: curr_joinDate,
+            posts: curr_posts
+        }
+
+        user_list.splice(curr_user_index, 1)
+        user_list.push(newUserInfo)
+
+        localStorage.setItem('users', JSON.stringify(user_list))
+
+        setStatus('success')
     }
-
     
     return (
         <div className = 'content col-lg-12'>
@@ -75,21 +95,18 @@ function Update () {
                                 <div className = 'card-header'>
                                     <p className = 'h1 text-center'>Edit Profile</p>
                                 </div>
-                                <form onSubmit = {onSubmit}>
+                                <form  onSubmit = {onSubmit}>
                                     <div>
                                         <label className = 'col-sm-2 col-form-label h6'>Name</label>
-                                        <input className = 'form-control' type = 'text' placeholder = 'Username' value ={form.username} onChange = {handleChange('username')}/>
+                                        <input className = 'form-control' type = 'text' placeholder = 'Username' onChange = {handleNameChange}/>
 
                                     </div>
                                     <div>
                                     <label className = 'col-sm-2 col-form-label h6'>Email</label>
-                                    <input className = 'form-control' type = 'email' placeholder = 'Email' value = {form.email} onChange =  {handleChange('email')}/>
+                                    <input className = 'form-control' type = 'email' placeholder = 'Email' onChange =  {handleEmailChange}/>
                                     </div>
 
-                                    <div>
-                                    <label className = 'col-sm-2 col-form-label h6'>Password</label>
-                                    <input className = 'form-control' type = 'password' placeholder = 'Password' value = {form.password} onChange =  {handleChange('password')}/>
-                                    </div>
+                                    {status === 'success' &&  <div className = 'alert alert-success' style={{marginTop:20}}>Successfully Updated</div>}
 
                                     <div className = 'container d-flex justify-content-between'>
                                         <button type= 'button' className ='btn btn-lg btn-secondary btn-rounded  m-3'
