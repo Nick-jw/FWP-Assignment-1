@@ -1,18 +1,15 @@
 import React from 'react'
-import {useNavigate, useState} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 function Profile ({onLogout}) {
+
+    const navigate = useNavigate()
+    {/* Variables required for getting username */}
     let email = JSON.parse(localStorage.getItem('loggedInUser'));
     let user_list = JSON.parse(localStorage.getItem('users'));
     let curr_user_index = -1
-    const navigate = useNavigate()
 
-    let posts = JSON.parse(localStorage.getItem('posts'));
-    if (posts === null) {
-        posts = []
-    }
-
-    //obtains loggedInUser email array
+    {/* Obtains loggedInUser email array */}
     for (var i = 0; i < user_list.length; i++) {
         if (user_list[i]['email'] === email) {
             curr_user_index = i
@@ -20,8 +17,14 @@ function Profile ({onLogout}) {
         }
     }
 
+    {/* Initializes post list */}
+    let posts = JSON.parse(localStorage.getItem('posts'));
+    if (posts === null) {
+        posts = []
+    }
 
-    //saves name and join date for display, user ID for deleting posts
+
+    // Saves name and join date for display, user ID for deleting posts
     let name = user_list[curr_user_index]['username']
     let join_date = user_list[curr_user_index]['joinDate']
 
@@ -37,7 +40,6 @@ function Profile ({onLogout}) {
     let j = posts.length
     while (j--) {
         if (posts[j].owner === name) {
-            console.log('post equals, splicing')
             posts.splice(j, 1)
         }
     }

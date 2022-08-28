@@ -8,9 +8,11 @@ function SignUp () {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState("none")
-    const navigate = useNavigate()
-    
 
+    {/* Saving date for account creation date record */}
+    let curr_date = new Date().toDateString().slice(4)
+    
+    {/* Focusing name input on initial page load */}
     useEffect(() => {
         document.getElementById('nameInput').focus()
     },[])
@@ -20,16 +22,12 @@ function SignUp () {
     const onUserChange = (e) => {
         setUsername(e.target.value)
     }
-
     const onPassChange = (e) => {
         setPassword(e.target.value)
     }
-
     const onEmailChange = (e) => {
         setEmail(e.target.value)
     }
-
-    let curr_date = new Date().toDateString().slice(4)
 
 
     const onSubmit = (e) => {
@@ -43,12 +41,11 @@ function SignUp () {
 
             {/* Gets array of users from local storage, initializes to empty array if null */}
             let users_list = JSON.parse(localStorage.getItem('users'))
-
             if (users_list === null) {  
             users_list = [] 
             }   
 
-            {/* Data structure for saving user data */}
+            {/* Saves new user data as an object*/}
             let curr_user = {
                 'username': username,
                 'email': email,
@@ -60,6 +57,8 @@ function SignUp () {
             {/* Adds new user to user list and pushes to local storage */}
             users_list.push(curr_user)
             localStorage.setItem('users', JSON.stringify(users_list))
+
+            {/* Gives confirmation and resets form */}
             setStatus("success")
             setUsername("")
             setEmail("")
@@ -118,6 +117,7 @@ function SignUp () {
                                     </div>
                                     <br/>
 
+                                    {/* Conditionally displays sign up confirmation or invalid password error message */}
                                     {status === 'fail' &&  <div className = 'alert alert-danger'>Password does not meet requirements: <br></br>&nbsp;&nbsp;&nbsp;&nbsp;Must be 8 characters long<br></br>&nbsp;&nbsp;&nbsp;&nbsp;Must contain one of ! @ # $ % &</div>}
                                     {status === 'success' &&  <div className = 'alert alert-success'>Sign up successful</div>}
 

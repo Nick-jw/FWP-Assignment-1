@@ -3,20 +3,17 @@ import pic1 from '../Images/work.jpg'
 import pic2 from'../Images/pc.jpg'
 
 
-
-
 function Content () {
     return (
         <div className = {"content col-lg-12 h-100"}>
             <div className={"container-fluid"}>
-           
 
                 <div className={"row"}>
 
                     {/*Empty column for the left sidebar */}
                     <div className={"col-sm-1"}></div>
                         
-                    {/* This div contains all main content hello world*/}
+                    {/* This div contains all main content */}
                     <div className={"col-sm-10 bg-light text-center"} style={{minHeight:500}}>
                         <br/>
                         <p className='display-1'>Loop Agile &#x25AA; <strong><em>Now</em></strong></p>
@@ -58,12 +55,8 @@ function Content () {
                         </div>
                         <br/>
 
+                        {/* Spacer for footer */}
                         <div className='space' style={{height:50}}></div>
-
-
-                    
-
-
                         
                     </div>
                     

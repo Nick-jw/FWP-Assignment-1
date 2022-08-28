@@ -1,5 +1,6 @@
 import React from 'react';
- 
+
+{/* UNUSED */}
 function Header () {
     return (
         <div className = {"header col-sm-12 "}>

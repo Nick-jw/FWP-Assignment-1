@@ -3,12 +3,13 @@ import Post from './Post'
 
 function Feed () {
 
+    {/* State variables for post contents / error checking */}
     const [postContent, setPostContent] = useState('')
     const [postLink, setPostLink] = useState('')
     const [error, setError] = useState(false)
 
-    let link = "https://i.imgur.com/PGloYsy.jpeg" // TEMPORARY
 
+    {/* Gets username corresponding to logged in user, otherwise displays Error */}
     const user_list = JSON.parse(localStorage.getItem('users'))
     const userEmail = JSON.parse(localStorage.getItem('loggedInUser'))
     let userName = 'Error'
@@ -20,16 +21,17 @@ function Feed () {
     }
 
 
+    {/* Initialising list of posts */}
     let posts = JSON.parse(localStorage.getItem('posts'))
     if (posts === null) {
         posts = []
     }
 
-    
+    {/* Reversed post list for displaying newest posts first */}
     let postsReversed = posts.slice().reverse()
 
 
-
+    {/* Storing contents on posts in state */}
     const onPostChange = (e) => {
         setPostContent(e.target.value)
     }
@@ -38,12 +40,13 @@ function Feed () {
         setPostLink(e.target.value)
     }
 
+
     const onPost = (e) => {
         e.preventDefault()
 
+        {/* Checking post content for valid length */}
         if (postContent.length > 0 && postContent.length < 251) {
             let curr_post = {
-                // ID: 99,
                 owner: userName,
                 content: postContent,
                 isReply: false,
@@ -51,9 +54,11 @@ function Feed () {
                 imgURL: postLink
             }
 
+            {/* Storing new post in localstorage, is displaying upon re-render */}
             posts.push(curr_post)
             localStorage.setItem('posts', JSON.stringify(posts))
 
+            {/* Resetting fields */}
             setPostContent('')
             setPostLink('')
             document.getElementById('textInput').value = ""
@@ -83,11 +88,26 @@ function Feed () {
                                 <h3 className={'card-title'}>Create a new post</h3>
                                 <form onSubmit={onPost}>
                                     <div className='form-group'>
-                                        <textarea className='form-control' rows='3' id='textInput' placeholder='Begin typing here...' onChange={onPostChange}></textarea>
-                                        <h5 className='card-subtitle text-muted' style={{marginTop:5, marginBottom:5}}>Image link</h5>
-                                        <input className='form-control' type='URL' id='linkInput' placeholder='Direct image link only' style={{marginBottom:10}} onChange={onLinkChange}></input>
-                                        <button className="btn btn-primary" type="submit">Post</button>
 
+                                        <textarea 
+                                        className='form-control' 
+                                        rows='3' 
+                                        id='textInput' 
+                                        placeholder='Begin typing here...' 
+                                        onChange={onPostChange}>
+                                        </textarea>
+
+                                        <h5 className='card-subtitle text-muted' style={{marginTop:5, marginBottom:5}}>Image link</h5>
+                                        
+                                        <input 
+                                        className='form-control' 
+                                        type='URL' 
+                                        id='linkInput' 
+                                        placeholder='Direct image link only' 
+                                        style={{marginBottom:10}} 
+                                        onChange={onLinkChange}></input>
+
+                                        <button className="btn btn-primary" type="submit">Post</button>
                                     </div>
                                 </form>
                                 {error && <div className = 'alert alert-danger'>Error: Post does not meet requirements</div>}
@@ -107,8 +127,10 @@ function Feed () {
                             })
                             }
                         </div>
+                        
                         <div style={{minHeight:50}}></div>
                     </div>
+                    
                     {/*Empty column for the right sidebar */}
                     <div className={"col-sm-1"}></div>
                 </div>
