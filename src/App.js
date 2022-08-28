@@ -11,8 +11,6 @@ import Update from "./Components/Update"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {useState} from 'react'
 
-
-
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("");
 
@@ -24,9 +22,6 @@ function App() {
     setLoggedInUser(null)
     localStorage.removeItem("loggedInUser")
   };
-
-
-
 
   return (
     <BrowserRouter>
